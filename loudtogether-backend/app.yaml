@@ -1,0 +1,37 @@
+name: loudtogether-backend
+services:
+  - name: api
+    git:
+      branch: main
+      repo_clone_url: git@github.com:jjaramillo34/loudtogether-v1.git
+    source_dir: loudtogether-backend
+    build_command: cd loudtogether-backend && npm install
+    run_command: cd loudtogether-backend && npm start
+    environment_slug: node-js
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: ${_self.PORT}
+      - key: MONGODB_URI
+        type: SECRET
+      - key: REDIS_URL
+        type: SECRET
+      - key: REDIS_PASSWORD
+        type: SECRET
+      - key: PUSHER_APP_ID
+        type: SECRET
+      - key: PUSHER_KEY
+        type: SECRET
+      - key: PUSHER_SECRET
+        type: SECRET
+      - key: PUSHER_CLUSTER
+        type: SECRET
+      - key: CLOUDINARY_CLOUD_NAME
+        type: SECRET
+      - key: CLOUDINARY_API_KEY
+        type: SECRET
+      - key: CLOUDINARY_API_SECRET
+        type: SECRET
+      - key: YOUTUBE_API_KEY
+        type: SECRET
